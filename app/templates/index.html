@@ -184,7 +184,7 @@ function escapeHtml(s) {
 $("btnStart").onclick = async () => { const r = await post("/api/sync/start");
   flash(r.ok ? "同步已启动" : "同步线程已在运行", r.ok); refresh(); };
 $("btnStop").onclick = async () => { const r = await post("/api/sync/stop");
-  flash(r.ok ? "已请求停止（当前批次完成后退出）" : "线程未在运行", r.ok); refresh(); };
+  flash(r.ok ? "已请求停止：未提交的整次发布将回滚，副本停留在完整发布状态" : "线程未在运行", r.ok); refresh(); };
 $("btnRefresh").onclick = () => { refresh(); refreshSource(); };
 $("btnQuery").onclick = async () => {
   const id = $("qid").value.trim();
